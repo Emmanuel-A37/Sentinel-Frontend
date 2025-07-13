@@ -16,11 +16,11 @@ const Help = () => {
           <p className="text-gray-700 mb-6">
             Projects help you organize and monitor different applications or services.
           </p>
-          <div className="space-y-4">
+          <div className="space-y-4 ">
             {[
               'Navigate to your dashboard and click the "New Project" button.',
-              'Enter your project name and select the environment (production, staging, or development).',
-              'Once created, you\'ll receive a unique API key. Keep this secure - you\'ll need it for integration.',
+              'Enter your project name and environment (production, staging, or development).',
+              'Once created, you\'ll receive a unique API key. You\'ll need this for integration.',
             ].map((text, index) => (
               <div className="flex items-start space-x-4" key={index}>
                 <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
@@ -31,7 +31,7 @@ const Help = () => {
             ))}
             <div className="bg-blue-50 p-4 rounded-lg mt-4">
               <p className="text-sm text-blue-800">
-                💡 <span className="font-semibold">Pro Tip:</span> Create separate projects for different environments (dev, staging, prod) to keep your monitoring organized.
+                💡 <span className="font-semibold">Tip:</span> Create separate projects for different environments (dev, staging, prod) to keep your monitoring organized.
               </p>
             </div>
           </div>
@@ -74,7 +74,7 @@ const Help = () => {
 
           <div className="mb-6">
             <h4 className="font-semibold mb-2">Installation</h4>
-            <pre className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">npm install @yourhandle/sentinel</pre>
+            <pre className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">npm install @emmanuel_a37/sentinel</pre>
           </div>
 
           <div className="mb-6">
