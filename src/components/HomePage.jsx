@@ -9,7 +9,7 @@ import api from '@/api/axiosconfig.js';
 const HomePage = () => {
     const [projects, setProjects] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [formData, setFormData] = useState({method : "", path : ""});
+    const [formData, setFormData] = useState({name : "", environment : ""});
 
     const [notification, setNotification] = useState(null);
     
@@ -197,16 +197,20 @@ const HomePage = () => {
                     <label htmlFor="environment" className="block text-sm font-medium text-zinc-700 mb-1">
                         Environment
                     </label>
-                    <input
-                        type="text"
-                        id="environment"
-                        name="environment"
-                        value={formData.environment}
-                        onChange={handleInputChange}
-                        placeholder="e.g. production"
-                        required
-                        className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-blue-500 focus:outline-none"
-                    />
+                    <select
+                    id="environment"
+                    name="environment"
+                    value={formData.environment}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border rounded-md border-gray-300 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    >
+                        <option value="" disabled className="text-gray-400">Select project environment</option>
+                        <option value="PRODUCTION" className="text-green-700 font-semibold"> PRODUCTION</option>
+                        <option value="STAGING" className="text-yellow-700 font-semibold"> STAGING</option>
+                      <option value="DEVELOPMENT" className="text-blue-700 font-semibold"> DEVELOPMENT</option>
+                    </select>
+
                     </div>
                 </form>
 
