@@ -90,7 +90,7 @@ const ApiPage = () => {
     }, []);
 
     useEffect(() => {
-        socket = io(process.env.SOCKET_URL || "http://localhost:4000", {
+        socket = io(NEXT_PUBLIC_SOCKET_URL, {
             transports: ["websocket"],
         });
 
