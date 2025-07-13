@@ -81,7 +81,7 @@ const Help = () => {
             <h4 className="font-semibold mb-2">Node.js / Express Integration</h4>
             <pre className="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto whitespace-pre-wrap">
 {`const express = require('express');
-const { sentinelLogger } = require('@emmanuel_a37/sentinel');
+const  sentinelLogger  = require('@emmanuel_a37/sentinel');
 
 const app = express();
 
@@ -100,7 +100,6 @@ app.get('/api/users', async (req, res) => {
     res.json(users);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
-    await sentinel.track({ method: 'GET', path: '/api/users', statusCode: 500, responseTime: Date.now() - startTime });
   }
 });`}
             </pre>
