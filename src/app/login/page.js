@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [formData, setFormData] = useState({email : "", password : ""});
+  const [isLoading, setIsLoading] = useState(false);
   const [view, setView] = useState(false);
   const [notification, setNotification] = useState(null);
   const router = useRouter();
@@ -37,6 +38,7 @@ const Login = () => {
         return;
     }
     try {
+        setIsLoading(true);
         const { data } = await api.post('auth/login', formData);
         if(data){
             setNotification({type : "success", message : data.message || "Successfully logged in"});
@@ -46,6 +48,9 @@ const Login = () => {
     } catch (error) {
         const message = error?.response?.data?.message || "Error logging in";
         setNotification({ type: "error", message });
+    }
+    finally{
+      setIsLoading(false);
     }
 
     }
@@ -101,9 +106,10 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-medium py-3 rounded-md transition"
+            disabled={isLoading}
+            className={`w-full bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-medium py-3 rounded-md transition ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
           >
-            Login
+            {isLoading ? "Logging In..." : "Login"}
           </button>
         </form>
 
