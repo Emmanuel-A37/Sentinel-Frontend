@@ -14,12 +14,12 @@ export default function Home() {
         </div>
         <div className="space-x-13 ">
         <Link href="/login">
-          <button className="bg-gray-200 text-blue-600 hover:bg-black cursor-pointer  text-xl px-6 py-2 rounded-md shadow-lg transition duration-200">
+          <button className="bg-gray-200 text-blue-600 hover:bg-blue-300 hover:text-gray-50 cursor-pointer  text-xl px-6 py-2 rounded-md shadow-lg transition duration-200">
             Login
           </button>
         </Link>
         <Link href="/signup">
-          <button className="bg-blue-600 hover:bg-black cursor-pointer text-white text-xl px-6 py-2 rounded-md shadow-lg transition duration-200">
+          <button className="bg-blue-600 hover:text-blue-300 hover:bg-gray-50 cursor-pointer text-white text-xl px-6 py-2 rounded-md shadow-lg transition duration-200">
             Get Started
           </button>
         </Link>
