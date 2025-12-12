@@ -69,28 +69,33 @@ const Help = () => {
         <section className="mb-16">
           <h2 className="text-2xl font-semibold text-blue-700 mb-4">Step 3: Backend Integration</h2>
           <p className="text-gray-700 mb-6">
-            Connect Sentinel to your backend to start tracking requests automatically.
+            Connect Sentinel to your backend to start tracking requests automatically. Choose your language and framework below.
           </p>
 
-          <div className="mb-6">
-            <h4 className="font-semibold mb-2">Installation</h4>
-            <pre className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">npm install @emmanuel_a37/sentinel</pre>
-          </div>
-
-          <div className="mb-6">
-            <h4 className="font-semibold mb-2">Node.js / Express Integration</h4>
-            <pre className="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto whitespace-pre-wrap">
+          {/* Node.js/Express */}
+          <div className="mb-10">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+              <span className="bg-green-100 text-green-700 px-3 py-1 rounded text-sm">Node.js</span>
+              Express / Koa / Fastify
+            </h3>
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Installation</h4>
+              <pre className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">npm install @emmanuel_a37/sentinel</pre>
+            </div>
+            <div className="mb-6">
+              <h4 className="font-semibold mb-2">Integration</h4>
+              <pre className="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto whitespace-pre-wrap">
 {`const express = require('express');
-const  sentinelLogger  = require('@emmanuel_a37/sentinel');
+const sentinelLogger = require('@emmanuel_a37/sentinel');
 
 const app = express();
 
-
 app.use(express.json());
 
+// Add Sentinel middleware
 app.use(
   sentinelLogger({
-    apiKey: 'your-api-key',
+    apiKey: 'your-api-key-here',
   })
 );
 
@@ -101,13 +106,114 @@ app.get('/api/users', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
+});
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
 });`}
-            </pre>
+              </pre>
+            </div>
           </div>
 
+          {/* Python Flask */}
+          <div className="mb-10">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded text-sm">Python</span>
+              Flask (WSGI)
+            </h3>
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Installation</h4>
+              <pre className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">pip install sentinel-logger</pre>
+            </div>
+            <div className="mb-6">
+              <h4 className="font-semibold mb-2">Integration</h4>
+              <pre className="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto whitespace-pre-wrap">
+{`from flask import Flask
+from sentinel_logger import SentinelLogger
+
+app = Flask(__name__)
+
+# Wrap your WSGI app with Sentinel
+app.wsgi_app = SentinelLogger(
+    app.wsgi_app,
+    api_key='your-api-key-here'
+)
+
+@app.route('/api/users')
+def get_users():
+    users = get_users_from_db()
+    return {'users': users}, 200
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Python Django */}
+          <div className="mb-10">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded text-sm">Python</span>
+              Django (WSGI)
+            </h3>
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Installation</h4>
+              <pre className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">pip install sentinel-logger</pre>
+            </div>
+            <div className="mb-6">
+              <h4 className="font-semibold mb-2">Add to settings.py</h4>
+              <pre className="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto whitespace-pre-wrap">
+{`MIDDLEWARE = [
+    'sentinel_logger.django.SentinelMiddleware',  # Add this first
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    # ... other middleware
+]
+
+# Add these settings
+SENTINEL_API_KEY = 'your-api-key-here'
+`}
+              </pre>
+            </div>
+          </div>
+
+
+          <div className="mb-10">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded text-sm">Python</span>
+              FastAPI / Starlette (ASGI)
+            </h3>
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Installation</h4>
+              <pre className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">pip install sentinel-logger</pre>
+            </div>
+            <div className="mb-6">
+              <h4 className="font-semibold mb-2">Integration</h4>
+              <pre className="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto whitespace-pre-wrap">
+{`from fastapi import FastAPI
+from sentinel_logger import SentinelLoggerASGI
+
+app = FastAPI()
+
+# Wrap your ASGI app with Sentinel
+app = SentinelLoggerASGI(
+    app,
+    api_key='your-api-key-here'
+)
+
+@app.get('/api/users')
+async def get_users():
+    users = await get_users_from_db()
+    return {'users': users}
+
+# Run with: uvicorn main:app --reload`}
+              </pre>
+            </div>
+          </div>
+
+        
         </section>
 
-        {/* Best Practices */}
         <section className="mb-16">
           <h2 className="text-2xl font-semibold text-blue-700 mb-4">Best Practices</h2>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
