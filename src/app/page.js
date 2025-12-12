@@ -8,22 +8,22 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-blue-100 to-white">
 
-      <header className="w-full flex items-center justify-between px-8 py-4 bg-white shadow">
+      <header className="w-full flex items-center justify-between px-4 sm:px-8 py-4 bg-white shadow">
         <div className="flex items-center gap-2">
           <BsShield className="text-blue-700" size={32} />
-          <h1 className="text-gray-900 font-bold text-3xl">Sentinel</h1>
+          <h1 className="text-gray-900 font-bold text-2xl sm:text-3xl">Sentinel</h1>
         </div>
-        <div className="space-x-13 ">
-        <Link href="/login">
-          <button className="bg-gray-200 text-blue-600 hover:bg-blue-300 hover:text-gray-50 cursor-pointer  text-xl px-6 py-2 rounded-md shadow-lg transition duration-200">
-            Login
-          </button>
-        </Link>
-        <Link href="/signup">
-          <button className="bg-blue-600 hover:text-blue-300 hover:bg-gray-50 cursor-pointer text-white text-xl px-6 py-2 rounded-md shadow-lg transition duration-200">
-            Get Started
-          </button>
-        </Link>
+        <div className="flex items-center gap-2 sm:gap-4">
+          <Link href="/login">
+            <button className="bg-gray-200 text-blue-600 hover:bg-blue-300 hover:text-gray-50 cursor-pointer text-sm sm:text-xl px-4 sm:px-6 py-2 rounded-md shadow-lg transition duration-200">
+              Login
+            </button>
+          </Link>
+          <Link href="/signup">
+            <button className="hidden md:block bg-blue-600 hover:text-blue-300 hover:bg-gray-50 cursor-pointer text-white text-xl px-6 py-2 rounded-md shadow-lg transition duration-200">
+              Get Started
+            </button>
+          </Link>
         </div>
       </header>
 
@@ -198,7 +198,7 @@ export default function Home() {
             <BsShield className="h-6 w-6 text-blue-400" />
             <span className="text-xl font-bold">Sentinel</span>
           </div>
-          <p className="text-gray-400 mb-2">© 2025 Sentinel. All rights reserved.</p>
+          <p className="text-gray-400 mb-2">&copy;{new Date().getFullYear()} Sentinel. All rights reserved.</p>
         </div>
       </footer>
     </div>
